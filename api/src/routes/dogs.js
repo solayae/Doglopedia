@@ -34,6 +34,7 @@ router.get('/:id', async (req, res) => {
           height: e.height,
           weight: e.weight,
           life_span: e.life_span,
+          // Pregunta: para el GET de /dogs tambien se deben traer los temperamentos de cada perro desde la API?
         });
       }
     }
