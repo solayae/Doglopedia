@@ -1,10 +1,6 @@
 const { Router } = require('express');
-const router = Router();
-const axios = require('axios');
-const { Dog, Temperament } = require('../db');
-const { API_KEY } = process.env;
 const { getAllDogs } = require('./controllers.js') ;
-require('dotenv').config();
+const router = Router();
 
 router.get('/', async (req, res) => {
   try {

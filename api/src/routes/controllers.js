@@ -1,7 +1,7 @@
 const axios = require('axios');
 const { Dog, Temperament } = require('../db');
 
-
+//Treaer la info de la API 
 
 const getDogsApi = async () => {
   const apiUrl = await axios.get('https://api.thedogapi.com/v1/breeds');
@@ -18,6 +18,8 @@ const getDogsApi = async () => {
   return apiInfo;
 };
 
+//Traer la info de la BDD
+
 const getDogsDB = async () => {
   return await Dog.findAll({
     include: {
@@ -30,12 +32,15 @@ const getDogsDB = async () => {
   });
 };
 
+//Concatenar la info de la API con la info de la BDD
+
 const getAllDogs = async () => {
   const dogsApi = await getDogsApi();
   const dogsDB = await getDogsDB();
   const totalDogs = dogsApi.concat(dogsDB);
   return totalDogs;
 };
+
 
 module.exports = {
   getDogsApi,
