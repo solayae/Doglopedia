@@ -13,6 +13,7 @@ const getDogsApi = async () => {
       height: e.height.metric + ' cm',
       weight: e.weight.metric + ' kg',
       life_span: e.life_span,
+      temperament: e.temperament,
     };
   });
   return apiInfo;
@@ -21,15 +22,16 @@ const getDogsApi = async () => {
 //Traer la info de la BDD
 
 const getDogsDB = async () => {
-  return await Dog.findAll({
-    include: {
-      model: Temperament,
-      attributes: ['name'],
-      through: {
-        attributes: [],
-      },
-    },
-  });
+  return await Dog.findAll()
+  // ({
+  //   include: {
+  //     model: Temperament,
+  //     attributes: ['name'],
+  //     through: {
+  //       attributes: [],
+  //     },
+  //   },
+  // });
 };
 
 //Concatenar la info de la API con la info de la BDD

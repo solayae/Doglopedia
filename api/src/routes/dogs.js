@@ -1,5 +1,6 @@
 const { Router } = require('express');
-const { getAllDogs } = require('./controllers.js') ;
+const { getAllDogs } = require('./controllers.js');
+const { Dog, Temperament } = require('../db');
 const router = Router();
 
 router.get('/', async (req, res) => {
@@ -34,7 +35,7 @@ router.get('/:id', async (req, res) => {
           height: e.height,
           weight: e.weight,
           life_span: e.life_span,
-          // Pregunta: para el GET de /dogs tambien se deben traer los temperamentos de cada perro desde la API?
+          temperament: e.temperament,
         });
       }
     }
@@ -44,15 +45,29 @@ router.get('/:id', async (req, res) => {
   }
 });
 
-// router.post("/", async (req, res) => {
-//   const {image, name, height, weight, life_span, temperaments} = req.body;
+router.post('/', async (req, res) => {
+  const { image, name, height, weight, life_span, temperament } = req.body;
+  try {
+    const newDog = await Dog.create({
+      image,
+      name,
+      height,
+      weight,
+      life_span,
+      temperament,
+    });
 
-//   try {
-//     const newDog = await Dog.create({image, name, height, weight, life_span})
-//   } catch (error) {
-//     res.status(404).send(error.message);
+    // temperament?.forEach(async () => {
+    //   var foundTemperament = await Temperament.findOne({
+    //     where: { name: temperament },
+    //   });
+    //   newDog.addTemperament(foundTemperament);
+    // });
 
-//   }
-// })
+    res.status(200).send(newDog);
+  } catch (error) {
+    res.status(404).send(error.message);
+  }
+});
 
 module.exports = router;
