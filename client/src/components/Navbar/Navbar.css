@@ -1,0 +1,58 @@
+.navbar {
+  margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 15px;
+}
+
+.filterDiv {
+  display: flex;
+  flex-direction: column;
+  font-family: inherit;
+  gap: 7px;
+}
+
+.searchButton {
+  font-family: inherit;
+  font-size: 16px;
+}
+
+.filterSelect {
+  font-family: inherit;
+}
+
+.searchInput {
+  font-family: inherit;
+  font-size: 16px;
+  width: 100%;
+  height: 45px;
+  padding-left: 15px;
+}
+
+.containerFilter {
+  display: flex;
+  gap: 10px;
+}
+
+.searchDiv {
+  display: flex;
+  width: 40%;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+}
+
+button {
+  background-color: #0077b6;
+  border: none;
+  border-radius: 10px;
+  color: white;
+  font-size: 1.3rem;
+  padding: 10px 15px;
+  cursor: pointer;
+  box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.3);
+  font-family: inherit;
+  cursor: pointer;
+}
