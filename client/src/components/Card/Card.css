@@ -1,13 +1,4 @@
-.cards-container {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  grid-gap: 1rem;
-  max-width: 80rem;
-  margin: 25px auto;
-  justify-content: center;
-  text-align: center;
 
-}
 
 .card-dog {
   display: flex;
