@@ -1,0 +1,76 @@
+form {
+  display: grid;
+  grid-template-rows: auto auto auto;
+}
+
+.form-container-parts {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+
+}
+
+h2 {
+
+  text-align: center;
+  padding: 30px;
+  font-size: 38px;
+}
+
+.form-container-parts {
+  display: flex;
+  justify-content: space-around;
+  height: 65vh;
+
+}
+
+.form-container-part {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  width: 50%;
+  align-items: center;
+
+}
+
+
+.button-create {
+  background: #FBCA1F;
+  font-family: inherit;
+  padding: 0.6em 1.3em;
+  font-weight: 900;
+  font-size: 18px;
+  border: 3px solid black;
+  border-radius: 0.4em;
+  box-shadow: 0.1em 0.1em;
+  width: 30vw;
+}
+
+.button-create:hover {
+  transform: translate(-0.05em, -0.05em);
+  box-shadow: 0.15em 0.15em;
+}
+
+.button-create:active {
+  transform: translate(0.05em, 0.05em);
+  box-shadow: 0.05em 0.05em;
+}
+
+.button-form-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.temperaments-select-container {
+  display: flex;
+  flex-wrap: wrap;
+
+}
+
+.div-temperament-container {
+}
+
+.button-delete-temperament {
+
+}

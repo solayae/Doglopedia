@@ -12,14 +12,18 @@ export default function Landing() {
     <div className='container-landing'>
       <div className='container-text'>
         <h1>List of All Kinds of Dog Breeds</h1>
-        <h3>
+        <p>
           From tiny French Bulldogs to giant Great Danes, our dog breed gallery
           has everything you need to know about your favourite dog breed!
-        </h3>
-        <button onClick={handleButtonClick}>Enter</button>
+        </p>
+        <button className='button-landing' onClick={handleButtonClick}>Enter</button>
       </div>
       <div className='container-image'>
-        <img src="https://pngimg.com/d/dog_PNG195.png" alt="dogs-breeds" width="650px"/>
+        <img
+          src='https://stickerly.pstatic.net/sticker_pack/CywitGCGNigg6dFKUxGdAg/B0TFVE/3/ea43ce81-6cb2-479d-8c2e-fadd443af6f6.png'
+          alt='dogs-breeds'
+          width='550px'
+        />
       </div>
     </div>
   );

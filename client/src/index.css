@@ -2,10 +2,15 @@
   margin: 0px;
   padding: 0px;
   box-sizing: border-box;
+  text-decoration: none;
+
 }
 
 body {
-  font-family: 'Inter', sans-serif;
+  font-family: 'Alfa Slab One', cursive;
+  font-family: 'Roboto Slab', serif;
+  font-family: 'Quicksand', sans-serif;
+  
 }
 
 code {

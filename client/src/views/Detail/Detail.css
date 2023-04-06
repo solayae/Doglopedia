@@ -1,0 +1,44 @@
+.detail-container {
+  width: 100vw;
+  height: 100vh;
+  background-color: whitesmoke;
+}
+
+.detail-container h3 {
+  font-size: 22px;
+}
+
+.detail-container p {
+  font-size: 22px;
+}
+
+.detail-container h1 {
+  background-color: rgb(240,172,3);
+  padding-bottom: 40px;
+  padding-top: 40px;
+  color: white;
+  font-weight: normal;
+  font-size: 70px;
+  text-align: center;
+}
+
+.detail-elements-container {
+  display: flex;
+  padding: 25px;
+  align-items: center;
+}
+
+.detail-text-container {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  width: 50%;
+  padding-left: 45px;
+}
+
+.detail-img-container {
+
+  display: flex;
+  justify-content: center;
+  width: 50%;
+}

@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import './Navbar.css';
 
-export function Navbar() {
+export function Navbar({ handleChange, handleSubmit }) {
   const [temperamento, setTemperamento] = useState('');
   const [origen, setOrigen] = useState('');
   const [ordenAlfabetico, setOrdenAlfabetico] = useState('');
@@ -25,9 +25,11 @@ export function Navbar() {
 
   return (
     <div className='navbar'>
-      <div className='searchDiv'>
-        <input type='text' placeholder='Buscar' className='searchInput' />
-        <button className='searchButton'>Buscar</button>
+      <div className='searchDiv' onChange={handleChange}>
+        <input type='search' placeholder='Buscar' className='searchInput' />
+        <button type='submit' className='searchButton' onClick={handleSubmit}>
+          Buscar
+        </button>
       </div>
       <div className='containerFilter'>
         <div className='filterDiv'>
@@ -96,4 +98,3 @@ export function Navbar() {
     </div>
   );
 }
-

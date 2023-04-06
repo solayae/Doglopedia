@@ -4,7 +4,9 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    background-color: rgb(240,172,3);
   }
+
   .container-text {
     width: 40%;
     margin-left: 60px;
@@ -15,13 +17,21 @@
     width: 60%;
     padding-left: 25px;
   }
-  h1 {    
-    font-size: 3rem;
-    color: rgb(0, 0, 0);
+
+  h1 {
+    font-size: 70px;
+    font-weight: normal ; 
+    color: rgb(255,255,255);
+    font-family: 'Alfa Slab One', cursive;
     margin-bottom: 2rem;
+    line-height: 1.1;
   }
 
-  .container-text button {
+  p {
+    font-size: 22px;
+  }
+
+  .button-landing {
     background-color: #0077b6;
     border: none;
     border-radius: 10px;
@@ -34,6 +44,6 @@
     margin-top: 20px;
   }
 
-  button:hover {
+  .button-landing:hover {
     background-color: #0096c7;
   }
