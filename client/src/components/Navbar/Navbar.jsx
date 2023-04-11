@@ -1,11 +1,22 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import './Navbar.css';
 
-export function Navbar({ handleChange, handleSubmit }) {
+export function Navbar({ handleChange }) {
   const [temperamento, setTemperamento] = useState('');
   const [origen, setOrigen] = useState('');
   const [ordenAlfabetico, setOrdenAlfabetico] = useState('');
   const [ordenPeso, setOrdenPeso] = useState('');
+  const [temperamentos, setTemperamentos] = useState([]);
+
+  useEffect(() => {
+    async function fetchTemperaments() {
+      const response = await fetch('http://localhost:3001/temperaments');
+      const data = await response.json();
+      setTemperamentos(data);
+    }
+
+    fetchTemperaments();
+  }, []);
 
   const handleTemperamentoChange = (event) => {
     setTemperamento(event.target.value);
@@ -25,12 +36,14 @@ export function Navbar({ handleChange, handleSubmit }) {
 
   return (
     <div className='navbar'>
+      
       <div className='searchDiv' onChange={handleChange}>
         <input type='search' placeholder='Buscar' className='searchInput' />
-        <button type='submit' className='searchButton' onClick={handleSubmit}>
+        {/* <button type='submit' className='searchButton' onClick={handleSubmit}>
           Buscar
-        </button>
+        </button> */}
       </div>
+
       <div className='containerFilter'>
         <div className='filterDiv'>
           <label className='filterLabel' htmlFor='temperamento'>
@@ -43,10 +56,11 @@ export function Navbar({ handleChange, handleSubmit }) {
             id='temperamento'
           >
             <option value=''>Todos</option>
-            <option value='Alegre'>Alegre</option>
-            <option value='Tranquilo'>Tranquilo</option>
-            <option value='Agresivo'>Agresivo</option>
-            <option value='Dominante'>Dominante</option>
+            {temperamentos.map((temperamento) => (
+              <option key={temperamento.id} value={temperamento.name}>
+                {temperamento.name}
+              </option>
+            ))}
           </select>
         </div>
         <div className='filterDiv'>
@@ -98,3 +112,4 @@ export function Navbar({ handleChange, handleSubmit }) {
     </div>
   );
 }
+

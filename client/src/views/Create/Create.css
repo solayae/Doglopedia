@@ -20,15 +20,16 @@ h2 {
   display: flex;
   justify-content: space-around;
   height: 65vh;
+  padding-left: 50px;
 
 }
 
 .form-container-part {
   display: flex;
   flex-direction: column;
-  justify-content: space-around;
+  justify-content: space-evenly;
   width: 50%;
-  align-items: center;
+  align-items: flex-start;
 
 }
 
@@ -43,6 +44,8 @@ h2 {
   border-radius: 0.4em;
   box-shadow: 0.1em 0.1em;
   width: 30vw;
+  margin-top: 10px;
+
 }
 
 .button-create:hover {
@@ -65,12 +68,85 @@ h2 {
 .temperaments-select-container {
   display: flex;
   flex-wrap: wrap;
+  grid-gap: 5px;
+  gap: 5px;
+  padding: 10px 5px 0 5px;
+
+
+}
+
+.form-input-container {
+  display: flex;
+  flex-direction: column;
+  align-content: center;
+  justify-content: center;
+  width: 90%;
+}
+
+.form-input-container input {
+  width: 90%;
+}
+
+input {
+  width: 100%;
+  padding: 12px 20px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+  transition: 0.5s;
+}
+
+.input-maxmin {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+
+}
+
+#form-temperaments-container {
+  display: flex;
+  flex-direction: column;
+  width: 80%;
+}
+
+#form-temperaments-container select {
+  font-family: inherit;
+  font-size: inherit;
+}
+
+
+.button-delete-temperament {
+  background-color: rgb(230, 34, 77);
+  border-radius: 5px;
+  box-sizing: border-box;
+  width: 15px;
+  height: 15px;
+  color: #fff;
+  border: none;
+  font-size: 13px;
+  cursor: pointer;
+  margin-top: 2px;
 
 }
 
 .div-temperament-container {
+  display: flex;
+  align-items: center;
+  gap: 3px;
+  background-color: grey;
+  border-radius: 0.5em;
+  height: 30px;
+  width: auto;
+  box-shadow: 1px 2px 4px #0007;
+  padding: 0 5px 0 5px;
+
+
+}
+#temperamento {
+  cursor: pointer;
 }
 
-.button-delete-temperament {
-
+#temperamento option {
+  cursor: pointer;
 }

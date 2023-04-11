@@ -256,7 +256,7 @@ const Formulario = () => {
       <h2>New Breed</h2>
       <div className='form-container-parts'>
         <div className='form-container-part'>
-          <div className='create-name-container'>
+          <div className='form-input-container' id='create-name-container'>
             <label htmlFor='nombre'>Nombre:</label>
             <input
               type='text'
@@ -270,7 +270,7 @@ const Formulario = () => {
             )}
           </div>
 
-          <div>
+          <div className='form-input-container'>
             <label htmlFor='url'>URL:</label>
             <input
               type='text'
@@ -283,7 +283,8 @@ const Formulario = () => {
               <span className='mensaje-error'>La URL es inválida</span>
             )}
           </div>
-          <div className='form-temperaments-container'>
+
+          <div id='form-temperaments-container'>
             <label htmlFor='temperamento'>Temperamento:</label>
             <select
               id='temperamento'
@@ -306,7 +307,12 @@ const Formulario = () => {
               {temperamentosSeleccionados.map((temperamento, index) => (
                 <div key={index} className='div-temperament-container'>
                   <span>{temperamento}</span>
-                  <button className='button-delete-temperament' onClick={() => handleDelete(temperamento)}>X</button>
+                  <button
+                    className='button-delete-temperament'
+                    onClick={() => handleDelete(temperamento)}
+                  >
+                    X
+                  </button>
                 </div>
               ))}
             </div>
@@ -314,73 +320,82 @@ const Formulario = () => {
         </div>
 
         <div className='form-container-part'>
-          <div>
+          <div className='form-input-container' id='input-peso'>
             <label htmlFor='pesoMin'>Peso:</label>
-            <input
-              type='text'
-              id='pesoMin'
-              value={pesoMin}
-              onChange={handlePesoMinChange}
-              placeholder='Mínimo'
-              className={pesoValido ? '' : 'invalido'}
-            />
-            <span> - </span>
-            <input
-              type='text'
-              id='pesoMax'
-              value={pesoMax}
-              onChange={handlePesoMaxChange}
-              placeholder='Máximo'
-              className={pesoValido ? '' : 'invalido'}
-            />
+            <div className='input-maxmin'>
+              <input
+                type='text'
+                id='pesoMin'
+                value={pesoMin}
+                onChange={handlePesoMinChange}
+                placeholder='Mínimo'
+                className={pesoValido ? '' : 'invalido'}
+              />
+              <span> - </span>
+              <input
+                type='text'
+                id='pesoMax'
+                value={pesoMax}
+                onChange={handlePesoMaxChange}
+                placeholder='Máximo'
+                className={pesoValido ? '' : 'invalido'}
+              />
+            </div>
+
             {!pesoValido && (
               <span className='mensaje-error'>El peso es inválida</span>
             )}
           </div>
 
-          <div>
+          <div className='form-input-container'>
             <label htmlFor='alturaMin'>Altura:</label>
-            <input
-              type='text'
-              id='alturaMin'
-              value={alturaMin}
-              onChange={handleAlturaMinChange}
-              placeholder='Mínimo'
-              className={alturaValida ? '' : 'invalido'}
-            />
-            <span> - </span>
-            <input
-              type='text'
-              id='alturaMax'
-              value={alturaMax}
-              onChange={handleAlturaMaxChange}
-              placeholder='Máximo'
-              className={alturaValida ? '' : 'invalido'}
-            />
+            <div className='input-maxmin'>
+              <input
+                type='text'
+                id='alturaMin'
+                value={alturaMin}
+                onChange={handleAlturaMinChange}
+                placeholder='Mínimo'
+                className={alturaValida ? '' : 'invalido'}
+              />
+              <span> - </span>
+              <input
+                type='text'
+                id='alturaMax'
+                value={alturaMax}
+                onChange={handleAlturaMaxChange}
+                placeholder='Máximo'
+                className={alturaValida ? '' : 'invalido'}
+              />
+            </div>
+
             {!alturaValida && (
               <span className='mensaje-error'>La altura es inválida</span>
             )}
           </div>
 
-          <div>
+          <div className='form-input-container'>
             <label htmlFor='life_spanMin'>Life Span:</label>
-            <input
-              type='text'
-              id='life_spanMin'
-              value={life_spanMin}
-              onChange={handleLifeSpanMinChange}
-              placeholder='Mínimo'
-              className={lifeSpanValida ? '' : 'invalido'}
-            />
-            <span> - </span>
-            <input
-              type='text'
-              id='life_spanMax'
-              value={life_spanMax}
-              onChange={handleLifeSpanMaxChange}
-              placeholder='Máximo'
-              className={lifeSpanValida ? '' : 'invalido'}
-            />
+            <div className='input-maxmin'>
+              <input
+                type='text'
+                id='life_spanMin'
+                value={life_spanMin}
+                onChange={handleLifeSpanMinChange}
+                placeholder='Mínimo'
+                className={lifeSpanValida ? '' : 'invalido'}
+              />
+              <span> - </span>
+              <input
+                type='text'
+                id='life_spanMax'
+                value={life_spanMax}
+                onChange={handleLifeSpanMaxChange}
+                placeholder='Máximo'
+                className={lifeSpanValida ? '' : 'invalido'}
+              />
+            </div>
+
             {!lifeSpanValida && (
               <span className='mensaje-error'>
                 La esperanza de vida es inválida

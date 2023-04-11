@@ -11,7 +11,7 @@ export default function Detail() {
 
   useEffect(() => {
     dispatch(getDetail(id));
-  }, [dispatch]);
+  }, [dispatch, id]);
 
   return (
     <div className='detail-container'>
@@ -26,7 +26,10 @@ export default function Detail() {
           <h3> Weight</h3>
           <p>A dog in good condition should be {detailDog.weight}.</p>
           <h3>Average Lifespan</h3>
-          <p>With proper care and nutrition can live between {detailDog.life_span}.</p>
+          <p>
+            With proper care and nutrition can live between{' '}
+            {detailDog.life_span}.
+          </p>
           <h3>Breed Temperament</h3>
           <p>This breed is characterized by being {detailDog.temperament}.</p>
         </div>
