@@ -1,9 +1,16 @@
 .cards-container {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(4, 1fr);
   grid-gap: 1rem;
   max-width: 80rem;
   margin: 25px auto;
   justify-content: center;
   text-align: center;
+}
+
+.filters-container {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  
 }

@@ -2,8 +2,8 @@ import {
   GET_DOGS,
   GET_BY_NAME,
   GET_DETAIL,
-  SORT_DOGS,
-  FILTER_DOGS,
+  FILTER_TEMPERAMENT,
+  GET_TEMPERAMENTS,
 } from './actions';
 
 let initialState = {
@@ -12,7 +12,7 @@ let initialState = {
   post: [],
   filteredDogs: [],
   detail: [],
-  order: { field: 'name', direction: 'asc' },
+  temperament: [], //[""]
 };
 
 function rootReducer(state = initialState, action) {
@@ -34,35 +34,29 @@ function rootReducer(state = initialState, action) {
         detail: action.payload,
       };
     }
-    case SORT_DOGS:
-      const { field, direction } = action.payload;
-      const dogsCopy = [...state.allDogs];
-      dogsCopy.sort((a, b) => {
-        let x = a[field];
-        let y = b[field];
-        if (direction === 'asc') {
-          return x < y ? -1 : x > y ? 1 : 0;
-        } else if (direction === 'desc') {
-          return x > y ? -1 : x < y ? 1 : 0;
-        } else {
-          return 0;
-        }
-      });
+
+    case GET_TEMPERAMENTS:
       return {
         ...state,
-        allDogs: dogsCopy,
-        order: {
-          field: field,
-          direction: direction,
-        },
+        temperament: action.payload,
       };
-    case FILTER_DOGS:
-      const filteredDogs = state.allDogs.filter((dog) =>
-        dog.temperament?.includes(action.payload)
-      );
+
+    case FILTER_TEMPERAMENT:
+      const stateAll = state.allBreeds;
+      const temperamentFilt =
+        action.payload === 'all'
+          ? stateAll
+          : action.payload === 'none'
+          ? stateAll.filter((f) => f.temperament === undefined)
+          : stateAll.filter(
+              (f) =>
+                f.temperament &&
+                f.temperament.filter((f) => f === action.payload).length
+            );
+
       return {
         ...state,
-        filteredDogs: filteredDogs,
+        breeds: temperamentFilt,
       };
 
     default:

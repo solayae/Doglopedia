@@ -10,8 +10,8 @@ export function Card({ dog }) {
         <img
           src={image}
           alt='Imagen correspondiente a la raza del perro'
-          width='340px'
-          height='290px'
+          width='300px'
+          height='250px'
         />
         <h2>{name}</h2>
         <p>Temperaments: {temperament}</p>
