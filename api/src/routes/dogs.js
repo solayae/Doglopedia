@@ -57,13 +57,6 @@ router.post('/', async (req, res) => {
       temperament,
     });
 
-    // temperament?.forEach(async () => {
-    //   var foundTemperament = await Temperament.findOne({
-    //     where: { name: temperament },
-    //   });
-    //   newDog.addTemperament(foundTemperament);
-    // });
-
     res.status(200).send(newDog);
   } catch (error) {
     res.status(404).send(error.message);

@@ -7,8 +7,8 @@ import {
 } from './actions';
 
 let initialState = {
-  allDogs: [],
-  usersCopy: [],
+  allDogs: [], //lista completa
+  copyDogs: [], //lista manipulable
   detail: [],
   temperament: [],
 };
@@ -19,7 +19,7 @@ function rootReducer(state = initialState, action) {
       return {
         ...state,
         allDogs: action.payload,
-        usersCopy: action.payload,
+        copyDogs: action.payload,
       };
     case GET_BY_NAME:
       return {
@@ -41,18 +41,19 @@ function rootReducer(state = initialState, action) {
 
     case FILTER_TEMPERAMENT:
       const stateAll = state.allDogs;
-      const temperamentFilt =
-        action.payload === 'all'
-          ? stateAll
-          : stateAll.filter(
-              (f) =>
-                f.temperament &&
-                f.temperament.filter((f) => f === action.payload).length
-            );
-
+      let temperamentFilt;
+      if (action.payload === 'all') {
+        temperamentFilt = stateAll;
+      } else {
+        temperamentFilt = stateAll.filter(
+          (f) =>
+            f.temperament &&
+            f.temperament.split(', ').filter((f) => f === action.payload).length
+        );
+      }
       return {
         ...state,
-        usersCopy: temperamentFilt,
+        copyDogs: temperamentFilt,
       };
 
     default:
