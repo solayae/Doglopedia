@@ -1,9 +1,13 @@
 import React, { useState, useEffect } from 'react';
-import './Cards.css';
+import { useDispatch, useSelector } from "react-redux";
+import { getTemperaments, filterTemperament } from "../../redux/actions";
 import { Card } from '../Card/Card.jsx';
 import { Paginado } from '../Paginado/Paginado.jsx';
+import './Cards.css';
 
 export function Cards({ allDogs }) {
+  const dispatch = useDispatch();
+  const temperament = useSelector((state) => state.temperament);
 
   const [temperamento, setTemperamento] = useState('');
   const [temperamentos, setTemperamentos] = useState([]);
@@ -22,22 +26,20 @@ export function Cards({ allDogs }) {
   };
 
   useEffect(() => {
-    async function fetchTemperaments() {
-      const response = await fetch('http://localhost:3001/temperaments');
-      const data = await response.json();
-      setTemperamentos(data);
-    }
-    fetchTemperaments();
-  }, []);
+    dispatch(getTemperaments());
+  }, [dispatch]);
+
 
   return (
     <div className='cards-filters-container'>
       <div className='filters-container'>
+        
+        {/* TEMPERAMENTOS */}
         <div className='filterDiv'>
           <label className='filterLabel'>Temperamentos:</label>
           <select className='filterSelect'>
-            <option value=''>Todos</option>
-            {temperamentos.map((temperamento) => (
+            <option value='all'>Todos</option>
+            {temperament.map((temperamento) => (
               <option key={temperamento.id} value={temperamento.name}>
                 {temperamento.name}
               </option>
@@ -85,8 +87,6 @@ export function Cards({ allDogs }) {
           <Card key={dog.id} dog={dog} />
         ))}
       </div>
-
-
     </div>
   );
 }

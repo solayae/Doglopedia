@@ -11,6 +11,7 @@ function Home() {
   const dispatch = useDispatch();
   const allDogs = useSelector((state) => state.allDogs);
 
+  
   const [filtered, setFiltered] = useState(allDogs);
   const [searchString, setSearchString] = useState('');
 

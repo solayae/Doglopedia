@@ -2,17 +2,15 @@ import {
   GET_DOGS,
   GET_BY_NAME,
   GET_DETAIL,
-  FILTER_TEMPERAMENT,
   GET_TEMPERAMENTS,
+  FILTER_TEMPERAMENT,
 } from './actions';
 
 let initialState = {
   allDogs: [],
   usersCopy: [],
-  post: [],
-  filteredDogs: [],
   detail: [],
-  temperament: [], //[""]
+  temperament: [],
 };
 
 function rootReducer(state = initialState, action) {
@@ -42,12 +40,10 @@ function rootReducer(state = initialState, action) {
       };
 
     case FILTER_TEMPERAMENT:
-      const stateAll = state.allBreeds;
+      const stateAll = state.allDogs;
       const temperamentFilt =
         action.payload === 'all'
           ? stateAll
-          : action.payload === 'none'
-          ? stateAll.filter((f) => f.temperament === undefined)
           : stateAll.filter(
               (f) =>
                 f.temperament &&
@@ -56,7 +52,7 @@ function rootReducer(state = initialState, action) {
 
       return {
         ...state,
-        breeds: temperamentFilt,
+        usersCopy: temperamentFilt,
       };
 
     default:
