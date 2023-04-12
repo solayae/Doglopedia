@@ -42,6 +42,7 @@
     box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.3);
     font-family: inherit;
     margin-top: 20px;
+    width: 10vw;
   }
 
   .button-landing:hover {

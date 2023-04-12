@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { getDogs } from '../../redux/actions';
 
+
 import { Cards } from '../../components/Cards/Cards.jsx';
 import { Navbar } from '../../components/Navbar/Navbar.jsx';
 

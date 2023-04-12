@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import './Create.css';
 
 const Formulario = () => {
@@ -126,10 +127,13 @@ const Formulario = () => {
   return (
     <form onSubmit={handleSubmit}>
       <h2>New Breed</h2>
+      <Link to='/home'>
+        <button id='back'>Home</button>
+      </Link>
       <div className='form-container-parts'>
         <div className='form-container-part'>
           <div className='form-input-container' id='create-name-container'>
-            <label htmlFor='nombre'>Nombre:</label>
+            <label htmlFor='nombre'>Name:</label>
             <input
               type='text'
               id='nombre'
@@ -138,7 +142,7 @@ const Formulario = () => {
               className={nombreValido ? '' : 'invalido'}
             />
             {!nombreValido && (
-              <span className='mensaje-error'>El nombre es inválido</span>
+              <span className='mensaje-error'>The name is invalid</span>
             )}
           </div>
 
@@ -152,12 +156,12 @@ const Formulario = () => {
               className={urlValida ? '' : 'invalido'}
             />
             {!urlValida && (
-              <span className='mensaje-error'>La URL es inválida</span>
+              <span className='mensaje-error'>The url is invalid</span>
             )}
           </div>
 
           <div id='form-temperaments-container'>
-            <label htmlFor='temperamento'>Temperamento:</label>
+            <label htmlFor='temperamento'>Temperament:</label>
             <select
               id='temperamento'
               name='temperamento'
@@ -168,7 +172,7 @@ const Formulario = () => {
                 ])
               }
             >
-              <option value=''>Selecciona un temperamento</option>
+              <option value=''>Select a temperament</option>
               {temperamentos.map((temperamento) => (
                 <option key={temperamento} value={temperamento}>
                   {temperamento}
@@ -193,14 +197,14 @@ const Formulario = () => {
 
         <div className='form-container-part'>
           <div className='form-input-container' id='input-peso'>
-            <label htmlFor='pesoMin'>Peso:</label>
+            <label htmlFor='pesoMin'>Weight:</label>
             <div className='input-maxmin'>
               <input
                 type='text'
                 id='pesoMin'
                 value={pesoMin}
                 onChange={handlePesoMinChange}
-                placeholder='Mínimo'
+                placeholder='Min'
                 className={pesoValido ? '' : 'invalido'}
               />
               <span> - </span>
@@ -209,25 +213,25 @@ const Formulario = () => {
                 id='pesoMax'
                 value={pesoMax}
                 onChange={handlePesoMaxChange}
-                placeholder='Máximo'
+                placeholder='Max'
                 className={pesoValido ? '' : 'invalido'}
               />
             </div>
 
             {!pesoValido && (
-              <span className='mensaje-error'>El peso es inválida</span>
+              <span className='mensaje-error'>Weight is invalid</span>
             )}
           </div>
 
           <div className='form-input-container'>
-            <label htmlFor='alturaMin'>Altura:</label>
+            <label htmlFor='alturaMin'>Height:</label>
             <div className='input-maxmin'>
               <input
                 type='text'
                 id='alturaMin'
                 value={alturaMin}
                 onChange={handleAlturaMinChange}
-                placeholder='Mínimo'
+                placeholder='Min'
                 className={alturaValida ? '' : 'invalido'}
               />
               <span> - </span>
@@ -236,13 +240,13 @@ const Formulario = () => {
                 id='alturaMax'
                 value={alturaMax}
                 onChange={handleAlturaMaxChange}
-                placeholder='Máximo'
+                placeholder='Max'
                 className={alturaValida ? '' : 'invalido'}
               />
             </div>
 
             {!alturaValida && (
-              <span className='mensaje-error'>La altura es inválida</span>
+              <span className='mensaje-error'>Height is invalid</span>
             )}
           </div>
 
@@ -254,7 +258,7 @@ const Formulario = () => {
                 id='life_spanMin'
                 value={life_spanMin}
                 onChange={handleLifeSpanMinChange}
-                placeholder='Mínimo'
+                placeholder='Min'
                 className={lifeSpanValida ? '' : 'invalido'}
               />
               <span> - </span>
@@ -263,14 +267,14 @@ const Formulario = () => {
                 id='life_spanMax'
                 value={life_spanMax}
                 onChange={handleLifeSpanMaxChange}
-                placeholder='Máximo'
+                placeholder='Max'
                 className={lifeSpanValida ? '' : 'invalido'}
               />
             </div>
 
             {!lifeSpanValida && (
               <span className='mensaje-error'>
-                La esperanza de vida es inválida
+                Life span is invalid
               </span>
             )}
           </div>
@@ -279,13 +283,13 @@ const Formulario = () => {
 
       <div className='button-form-container'>
         {hayCamposVacios && (
-          <span className='mensaje-error'>Hay campos vacíos</span>
+          <span className='mensaje-error'>There are empty fields</span>
         )}
 
         <button className='button-create' type='submit'>
           Enviar
         </button>
-        {perroCreado ? <span>Perro creado</span> : null}
+        {perroCreado ? <span>New breed created</span> : null}
       </div>
     </form>
   );

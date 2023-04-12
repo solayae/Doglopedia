@@ -32,20 +32,26 @@ export function Paginado({ dogsPerPage, allDogs, paginado, currentPage }) {
     <div className='paginado-container'>
       <ul className='paginado'>
         <li>
-          <button onClick={handlePrev} className='button-next-prev'>Prev</button>
+          <button onClick={handlePrev} className='button-next-prev'>
+            Prev
+          </button>
         </li>
         {visiblePages.map((number) => (
           <li key={number} className='paginado-item'>
             <button
               onClick={() => handleClick(number)}
-              className={`paginado-link ${number === currentPage ? 'active' : ''}`}
+              className={`paginado-link ${
+                number === currentPage ? 'active' : ''
+              }`}
             >
               {number}
             </button>
           </li>
         ))}
         <li>
-          <button onClick={handleNext} className='button-next-prev'>Next</button>
+          <button onClick={handleNext} className='button-next-prev'>
+            Next
+          </button>
         </li>
       </ul>
     </div>

@@ -18,7 +18,21 @@ export function Cards({ allDogs }) {
   const [dogsPerPage, setDogsPerPage] = useState(8);
   const indexOfLastDog = currentPage * dogsPerPage;
   const indexOfFirstDog = indexOfLastDog - dogsPerPage;
-  const currentDogs = allDogs.slice(indexOfFirstDog, indexOfLastDog);
+  // const currentDogs = allDogs.slice(indexOfFirstDog, indexOfLastDog);
+
+  // filter state
+  const [filter, setFilter] = useState({
+    temperament: 'all',
+    origin: '',
+    weight: '',
+  });
+
+  const currentDogs = allDogs
+    .filter((dog) => {
+      if (filter.temperament === 'all') return true;
+      return dog.temperament?.includes(filter.temperament);
+    })
+    .slice(indexOfFirstDog, indexOfLastDog);
 
   const paginado = (pageNumber) => {
     setCurrentPage(pageNumber);
@@ -28,39 +42,57 @@ export function Cards({ allDogs }) {
     dispatch(getTemperaments());
   }, [dispatch]);
 
-  const [order, setOrder] = useState('');
+  // const [order, setOrder] = useState('');
 
-  //reload-----
-  const [reload, setReload] = useState({
-    sort: '',
-    breed: '',
-    temperament: 'all',
-    weight: '',
-    search: '',
-  });
+  // //reload-----
+  // const [reload, setReload] = useState({
+  //   sort: '',
+  //   breed: '',
+  //   temperament: 'all',
+  //   weight: '',
+  //   search: '',
+  // });
 
-  //----filter temperamento------
+  // //----filter temperamento------
+  // function handleTemperament(temp) {
+  //   temp.preventDefault();
+  //   dispatch(filterTemperament(temp.target.value));
+  //   setOrder(`Order by activities : ${temp.target.value}`);
+  //   setReload({ temp: temp.target.value });
+  //   setReload({ breed: '' });
+  //   setCurrentPage(1);
+  // }
+
+  // ----filter temperamento------
+ 
   function handleTemperament(temp) {
     temp.preventDefault();
     dispatch(filterTemperament(temp.target.value));
-    setOrder(`Order by activities : ${temp.target.value}`);
-    setReload({ temp: temp.target.value });
-    setReload({ breed: '' });
+    setFilter({ ...filter, temperament: temp.target.value });
     setCurrentPage(1);
   }
+
+  //muestra solo los perros necesarios por pagina luego de aplicar el filtro
+
+  const filteredDogs = allDogs.filter((dog) => {
+    if (filter.temperament === 'all') return true;
+    return dog.temperament?.includes(filter.temperament);
+  });
+  
+  const totalFilteredDogs = filteredDogs.length;
 
   return (
     <div className='cards-filters-container'>
       <div className='filters-container'>
         {/* TEMPERAMENTOS */}
         <div className='filterDiv'>
-          <label className='filterLabel'>Temperamentos:</label>
+          <label className='filterLabel'>Temperaments:</label>
           <select
             className='filterSelect'
-            value={reload.temperament}
+            value={filter.temperament}
             onChange={(temp) => handleTemperament(temp)}
           >
-            <option value='all'>Todos</option>
+            <option value='all'>All</option>
 
             {temperament
               ?.filter((f) => f.name !== '')
@@ -81,43 +113,43 @@ export function Cards({ allDogs }) {
           </select>
         </div>
 
-        <div className='filterDiv'>
+        {/* <div className='filterDiv'>
           <label className='filterLabel'>Origen:</label>
           <select value={origen} className='filterSelect'>
             <option value=''>Todos</option>
             <option value='api'>Existentes</option>
             <option value='bdd'>Creados</option>
           </select>
-        </div>
+        </div> */}
 
-        <div className='filterDiv'>
+        {/* <div className='filterDiv'>
           <label className='filterLabel'>Ordenar por orden alfabético:</label>
           <select value={ordenAlfabetico} className='filterSelect'>
             <option value=''>Ninguno</option>
             <option value='az'>A-Z</option>
             <option value='za'>Z-A</option>
           </select>
-        </div>
+        </div> */}
 
-        <div className='filterDiv'>
+        {/* <div className='filterDiv'>
           <label className='filterLabel'>Ordenar por peso:</label>
           <select value={ordenPeso} className='filterSelect'>
             <option value=''>Ninguno</option>
             <option value='asc'>Max - Min</option>
             <option value='desc'>Min - Max</option>
           </select>
-        </div>
+        </div> */}
       </div>
 
       <Paginado
         dogsPerPage={dogsPerPage}
         currentPage={currentPage}
-        allDogs={allDogs.length}
+        allDogs={totalFilteredDogs}
         paginado={paginado}
       />
 
       <div className='cards-container'>
-        {copyDogs?.map((dog) => (
+        {currentDogs?.map((dog) => (
           <Card key={dog.id} dog={dog} />
         ))}
       </div>

@@ -20,7 +20,7 @@ export default function Landing() {
       </div>
       <div className='container-image'>
         <img
-          src='https://stickerly.pstatic.net/sticker_pack/CywitGCGNigg6dFKUxGdAg/B0TFVE/3/ea43ce81-6cb2-479d-8c2e-fadd443af6f6.png'
+          src='https://assets.stickpng.com/images/580b57fbd9996e24bc43bbd7.png'
           alt='dogs-breeds'
           width='550px'
         />

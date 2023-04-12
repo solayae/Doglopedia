@@ -1,4 +1,5 @@
 import React, { useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { getDetail } from '../../redux/actions';
 import { useParams } from 'react-router-dom';
@@ -16,6 +17,9 @@ export default function Detail() {
   return (
     <div className='detail-container'>
       <h1>{detailDog.name}</h1>
+      <Link to='/home'>
+        <button>Back</button>
+      </Link>
       <div className='detail-elements-container'>
         <div className='detail-text-container'>
           <h3>Size </h3>
