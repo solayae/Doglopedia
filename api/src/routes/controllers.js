@@ -23,15 +23,7 @@ const getDogsApi = async () => {
 
 const getDogsDB = async () => {
   return await Dog.findAll()
-  // ({
-  //   include: {
-  //     model: Temperament,
-  //     attributes: ['name'],
-  //     through: {
-  //       attributes: [],
-  //     },
-  //   },
-  // });
+
 };
 
 //Concatenar la info de la API con la info de la BDD

@@ -1,7 +1,7 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
-import { getDetail } from '../../redux/actions';
+import { getDetail, cleanDetail } from '../../redux/actions';
 import { useParams } from 'react-router-dom';
 import './Detail.css';
 
@@ -10,15 +10,21 @@ export default function Detail() {
   const dispatch = useDispatch();
   const detailDog = useSelector((state) => state.detail);
 
+
   useEffect(() => {
+    alert("Entré")
     dispatch(getDetail(id));
+    return () => {
+      dispatch(cleanDetail())
+      alert("Salí")
+    }
   }, [dispatch, id]);
 
   return (
     <div className='detail-container'>
       <h1>{detailDog.name}</h1>
       <Link to='/home'>
-        <button>Back</button>
+        <button >Back</button>
       </Link>
       <div className='detail-elements-container'>
         <div className='detail-text-container'>

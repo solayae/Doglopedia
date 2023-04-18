@@ -12,10 +12,12 @@ function Home() {
   const dispatch = useDispatch();
   const allDogs = useSelector((state) => state.allDogs);
 
-  
+  //busqueda
   const [filtered, setFiltered] = useState(allDogs);
   const [searchString, setSearchString] = useState('');
 
+
+  // actualiza el estado searchString
   function handleChange(e) {
     e.preventDefault();
     const { value } = e.target;
@@ -24,17 +26,19 @@ function Home() {
       setFiltered(allDogs);
     }
   }
-
-  useEffect(() => {
-    dispatch(getDogs());
-  }, [dispatch]);
-
+  //filtrar la lista de perros
   useEffect(() => {
     const filtered = allDogs.filter((dog) =>
       dog.name.toLowerCase().includes(searchString.toLowerCase())
     );
     setFiltered(filtered);
   }, [allDogs, searchString]);
+
+  useEffect(() => {
+    dispatch(getDogs());
+  }, [dispatch]);
+
+
 
   return (
     <div className='home-container'>

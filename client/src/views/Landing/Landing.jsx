@@ -1,13 +1,8 @@
 import React from 'react';
-import { useHistory } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import './Landing.css';
 
 export default function Landing() {
-  const history = useHistory();
-
-  const handleButtonClick = () => {
-    history.push('/home');
-  };
   return (
     <div className='container-landing'>
       <div className='container-text'>
@@ -16,7 +11,9 @@ export default function Landing() {
           From tiny French Bulldogs to giant Great Danes, our dog breed gallery
           has everything you need to know about your favourite dog breed!
         </p>
-        <button className='button-landing' onClick={handleButtonClick}>Enter</button>
+        <Link to='/home'>
+          <button className='button-landing'>Enter</button>
+        </Link>
       </div>
       <div className='container-image'>
         <img

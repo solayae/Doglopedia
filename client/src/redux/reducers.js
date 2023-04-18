@@ -4,6 +4,9 @@ import {
   GET_DETAIL,
   GET_TEMPERAMENTS,
   FILTER_TEMPERAMENT,
+  CLEAN_DETAIL,
+  SORT_WEIGTH,
+  SORT_BREED_AZ,
 } from './actions';
 
 let initialState = {
@@ -54,6 +57,39 @@ function rootReducer(state = initialState, action) {
       return {
         ...state,
         copyDogs: temperamentFilt,
+      };
+
+    case CLEAN_DETAIL:
+      return {
+        ...state,
+        detail: [],
+      };
+
+      case SORT_BREED_AZ:
+      const sortBreed = state.copyDogs;
+      const sortByName =
+        action.payload === 'za'
+          ? sortBreed.sort(function (a, b) {
+              if (a.name > b.name) {
+                return -1;
+              }
+              if (b.name > a.name) {
+                return 1;
+              }
+              return 0;
+            })
+          : sortBreed.sort(function (a, b) {
+              if (a.name > b.name) {
+                return 1;
+              }
+              if (b.name > a.name) {
+                return -1;
+              }
+              return 0;
+            });
+      return {
+        ...state,
+        copyDogs: sortByName,
       };
 
     default:
