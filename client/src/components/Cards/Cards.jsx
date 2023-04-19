@@ -21,6 +21,16 @@ export function Cards({ allDogs }) {
   const indexOfLastDog = currentPage * dogsPerPage;
   const indexOfFirstDog = indexOfLastDog - dogsPerPage;
 
+  const [order, setOrder] = useState('');
+
+  //reload-----
+  const [reload, setReload] = useState({
+    sort: '',
+    breed: '',
+    weight: '',
+    search: '',
+  });
+
   const paginado = (pageNumber) => {
     setCurrentPage(pageNumber);
   };
@@ -44,18 +54,20 @@ export function Cards({ allDogs }) {
     temperament: 'all',
   });
 
-  // ordenar AZ
-
-  const [sorting, setSorting] = useState({
-    order: '',
-  });
-
   // reset sorting state when filter changes
   useEffect(() => {
     setSorting({ order: '' });
   }, [filter]);
 
+  const [breedOriginFilter, setBreedOriginFilter] = useState('all');
+
+  // ordenar AZ
+  const [sorting, setSorting] = useState({
+    order: '',
+  });
+
   //filtra segun temp y pag act
+
   const currentDogs = allDogs
     .filter((dog) => {
       if (filter.temperament === 'all') return true;
@@ -67,6 +79,7 @@ export function Cards({ allDogs }) {
           return a.name.localeCompare(b.name);
         case 'z-a':
           return b.name.localeCompare(a.name);
+
         default:
           return 0;
       }
@@ -90,6 +103,26 @@ export function Cards({ allDogs }) {
   });
 
   const totalFilteredDogs = filteredDogs.length;
+
+  // FILTRAR POR ORIGEN
+
+  // function handleFilterBreedOrigin(e) {
+  //   dispatch(filterBreedOrigin(e.target.value));
+  // }
+
+  function handleFilterBreedOrigin(e) {
+    dispatch(filterBreedOrigin(e.target.value));
+    setBreedOriginFilter(e.target.value); // actualizar estado del filtro
+    setCurrentPage(1);
+  }
+
+  //ORDENAR POR PESO
+  function handleSortWeigth(sorteandoWeigth) {
+    sorteandoWeigth.preventDefault();
+    dispatch(sortWeigth(sorteandoWeigth.target.value)); // se ejecuta y toma como payload el valor del click del usuario
+    setOrder(`Order by abc : ${sorteandoWeigth.target.value}`);
+    setReload({ sorteandoWeigth: sorteandoWeigth.target.value });
+  }
 
   return (
     <div className='cards-filters-container'>
@@ -132,6 +165,32 @@ export function Cards({ allDogs }) {
             <option value=''>Select</option>
             <option value='a-z'>A-Z</option>
             <option value='z-a'>Z-A</option>
+          </select>
+        </div>
+
+        <div className='filterDiv'>
+          <label className='filterLabel'>Filter by origin</label>
+          <select
+            className='filterSelect'
+            // value={reload.breed}
+            onChange={(e) => handleFilterBreedOrigin(e)}
+          >
+            <option value=''>Select</option>
+            <option value='all'>All</option>
+            <option value='db'>Created</option>
+            <option value='api'>Existentes</option>
+          </select>
+        </div>
+
+        <div className='filterDiv'>
+          <label className='filterLabel'>Filter by Weight</label>
+          <select
+            className='filterSelect'
+            onChange={(sortWeigth) => handleSortWeigth(sortWeigth)}
+          >
+            <option value=''>⇅</option>
+            <option value='high'>high</option>
+            <option value='low'>low</option>
           </select>
         </div>
       </div>

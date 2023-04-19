@@ -55,8 +55,8 @@ const Formulario = () => {
       const perro = {
         image: url,
         name: nombre,
-        height: `${alturaMin} - ${alturaMax} cm`,
-        weight: `${pesoMin} - ${pesoMax} kg`,
+        height: `${alturaMin} - ${alturaMax} `,
+        weight: `${pesoMin} - ${pesoMax} `,
         life_span: `${life_spanMin} - ${life_spanMax} years`,
         temperament: temperamentosSeleccionados.join(', '),
       };

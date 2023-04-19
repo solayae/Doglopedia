@@ -7,6 +7,7 @@ import {
   CLEAN_DETAIL,
   SORT_WEIGTH,
   SORT_BREED_AZ,
+  FILTER_BREED_ORIGIN,
 } from './actions';
 
 let initialState = {
@@ -65,10 +66,10 @@ function rootReducer(state = initialState, action) {
         detail: [],
       };
 
-      case SORT_BREED_AZ:
+    case SORT_BREED_AZ:
       const sortBreed = state.copyDogs;
       const sortByName =
-        action.payload === 'za'
+        action.payload === 'z-a'
           ? sortBreed.sort(function (a, b) {
               if (a.name > b.name) {
                 return -1;
@@ -90,6 +91,37 @@ function rootReducer(state = initialState, action) {
       return {
         ...state,
         copyDogs: sortByName,
+      };
+
+    case FILTER_BREED_ORIGIN:
+      const createdFilter =
+        action.payload === 'all'
+          ? state.allDogs
+          : action.payload === 'api'
+          ? state.allDogs.filter((e) => typeof e.id === 'number')
+          : state.allDogs.filter((e) => typeof e.id === 'string');
+
+      console.log(createdFilter);
+
+      return {
+        ...state,
+        copyDogs: createdFilter,
+      };
+
+    case SORT_WEIGTH:
+      const weigthSort = state.copyDogs;
+      const sorting = weigthSort.sort(function (a, b) {
+        const weightA = parseInt(a.weight.split(' ')[0]);
+        const weightB = parseInt(b.weight.split(' ')[0]);
+        return action.payload === 'low' ? weightA - weightB : weightB - weightA;
+      });
+
+      console.log(action.payload);
+      console.log(sorting);
+
+      return {
+        ...state,
+        copyDogs: sorting,
       };
 
     default:

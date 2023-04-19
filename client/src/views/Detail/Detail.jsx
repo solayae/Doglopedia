@@ -31,10 +31,10 @@ export default function Detail() {
           <h3>Size </h3>
           <p>
             The {detailDog.name} is a dog that in adulthood measures between{' '}
-            {detailDog.height}.
+            {detailDog.height} cm.
           </p>
           <h3> Weight</h3>
-          <p>A dog in good condition should be {detailDog.weight}.</p>
+          <p>A dog in good condition should be {detailDog.weight} kg.</p>
           <h3>Average Lifespan</h3>
           <p>
             With proper care and nutrition can live between{' '}

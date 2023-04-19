@@ -15,7 +15,7 @@ export function Card({ dog }) {
         />
         <h2>{name}</h2>
         <p>Temperaments: {temperament}</p>
-        <p>Weight: {weight}</p>
+        <p>Weight: {weight} kg</p>
       </Link>
     </div>
   );

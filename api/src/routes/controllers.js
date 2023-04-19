@@ -10,8 +10,8 @@ const getDogsApi = async () => {
       id: e.id,
       image: e.image.url,
       name: e.name,
-      height: e.height.metric + ' cm',
-      weight: e.weight.metric + ' kg',
+      height: e.height.metric,
+      weight: e.weight.metric,
       life_span: e.life_span,
       temperament: e.temperament,
     };
