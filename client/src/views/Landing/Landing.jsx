@@ -17,9 +17,9 @@ export default function Landing() {
       </div>
       <div className='container-image'>
         <img
-          src='https://assets.stickpng.com/images/580b57fbd9996e24bc43bbd7.png'
+          src='https://dogplus.cl/wp-content/uploads/2021/09/dog-plus-dog-black.png'
           alt='dogs-breeds'
-          width='550px'
+          width='350px'
         />
       </div>
     </div>

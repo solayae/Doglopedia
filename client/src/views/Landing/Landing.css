@@ -8,13 +8,14 @@
   }
 
   .container-text {
-    width: 40%;
+    width: 50%;
     margin-left: 60px;
   }
 
   .container-image {
     display: flex;
-    width: 60%;
+    justify-content: space-around;
+    width: 50%;
     padding-left: 25px;
   }
 

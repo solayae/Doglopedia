@@ -66,7 +66,6 @@ export function filterTemperament(payload) {
 export function cleanDetail() {
   return {
     type: CLEAN_DETAIL,
-    
   }
 }
 
