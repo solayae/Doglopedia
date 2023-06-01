@@ -3,6 +3,8 @@ import Home from './views/Home/Home.jsx';
 import Landing from './views/Landing/Landing.jsx';
 import Detail from './views/Detail/Detail.jsx';
 import Create from './views/Create/Create.jsx';
+import axios from 'axios';
+axios.defaults.baseURL = 'http://localhost:3001'
 
 function App() {
   return (

@@ -12,7 +12,7 @@ export const FILTER_BREED_ORIGIN = 'FILTER_BREED_ORIGIN';
 
 export function getDogs() {
   return async function (dispatch) {
-    const response = await axios.get('http://localhost:3001/dogs');
+    const response = await axios.get('/dogs');
     return dispatch({
       type: 'GET_DOGS',
       payload: response.data,
@@ -23,7 +23,7 @@ export function getDogs() {
 export function getByName(name) {
   return async function (dispatch) {
     const response = await axios.get(
-      `http://localhost:3001/dogs/?name=${name}`
+      `/dogs/?name=${name}`
     );
     return dispatch({
       type: 'GET_BY_NAME',
@@ -34,7 +34,7 @@ export function getByName(name) {
 
 export function getDetail(id) {
   return async function (dispatch) {
-    let getId = await axios.get(`http://localhost:3001/dogs/${id}`);
+    let getId = await axios.get(`/dogs/${id}`);
     return dispatch({
       type: 'GET_DETAIL',
       payload: getId.data,
@@ -45,7 +45,7 @@ export function getDetail(id) {
 export function getTemperaments() {
   return async function (dispatch) {
     try {
-      const getTemp = await axios.get('http://localhost:3001/temperaments');
+      const getTemp = await axios.get('/temperaments');
       return dispatch({
         type: 'GET_TEMPERAMENTS',
         payload: getTemp.data,
