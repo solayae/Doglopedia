@@ -20,7 +20,7 @@ const Formulario = () => {
 
   //traemos temperamentos
   useEffect(() => {
-    fetch('http://localhost:3001/temperaments')
+    fetch('/temperaments')
       .then((response) => response.json())
       .then((data) => {
         const temperamentosNombres = data.map(
@@ -61,7 +61,7 @@ const Formulario = () => {
         temperament: temperamentosSeleccionados.join(', '),
       };
 
-      fetch('http://localhost:3001/dogs', {
+      fetch('/dogs', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
